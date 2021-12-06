@@ -1,0 +1,22 @@
+.list {
+align-items:center;
+padding:5px;
+width:200px;
+display: flex;
+margin-top:15px;
+border: solid #f1f0f7 1px;
+}
+
+.chip {
+fill:grey;
+
+}
+
+.true {
+    fill: green;
+    
+}
+
+.false {
+    fill: red;
+}

@@ -1,42 +1,34 @@
-import { Component } from 'react';
-import styled from '@emotion/styled/macro';
-// import { PageTitle } from 'components/PageTitle/PageTitle';
-// import { EventBoard } from 'components/EventBoard/EventBoard';
-// import upcomingEvents from 'mock-data/upcoming-events.json';
-import { VideoList } from 'components/VideoList/VideoList';
-import { VimeoPlayer } from 'components/VimeoPlayer/VimeoPlayer';
-import videos from 'mock-data/videos.json';
+import Friendlist from "components/FriendList/FriendList";
+import Profile from "components/Profile/Profile";
+import {PageTitle} from "components/PageTitle/PageTitle";
+import Transaction from "components/Transaction/Transaction";
+import {StatisticList} from "components/Statistic/StatisticList";
+import data from "../../data.json"
+import friends from "../../friends.json";
+import transactions from "../../transaction.json"
 
-const AppContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr max-content;
-  gap: 24px;
-`;
 
-export class App extends Component {
-  state = {
-    selectedVideo: null,
-  };
+export const App = () => {
+     return (
+         <div>
+             <Profile></Profile>
 
-  selectVideo = link => {
-    this.setState({
-      selectedVideo: link,
-    });
-  };
+             {/* <Statistic title = "Upload stats"  
+            //  label={idt.label}
+            // percentage = {idt.percentage}
+            >   
+            </Statistic> */}
+            <section>
+            <PageTitle text = "Upload stats" />
+             <StatisticList 
+              stats = {data}/>
+              </section>
+             <Friendlist
+             friends = {friends}/>
+             <Transaction
+        items = {transactions}
+             />
+         </div>
+     );
+ }
 
-  render() {
-    const { selectedVideo } = this.state;
-    return (
-      <AppContainer>
-        {/* <PageTitle>24th Core Worlds Coalition Conference</PageTitle> */}
-        {/* <EventBoard events={upcomingEvents} /> */}
-        <VimeoPlayer url={selectedVideo} />
-        <VideoList
-          videos={videos}
-          selectedVideo={selectedVideo}
-          onSelect={this.selectVideo}
-        />
-      </AppContainer>
-    );
-  }
-}
